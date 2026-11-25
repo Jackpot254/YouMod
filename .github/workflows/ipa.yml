@@ -420,7 +420,13 @@ jobs:
             icon_arg="-k custom_icon.png"
           fi
           cyan -i youtube.ipa -o YouMod_${{ env.YT_VERSION }}_v${{ env.YOUMOD_VERSION }}.ipa -uwef *.deb -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }} $icon_arg
-
+     
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: YouMod-IPA
+          path: YouMOD_*.ipa
+          
       - name: Create a Draft Release
         uses: softprops/action-gh-release@v3
         with:
